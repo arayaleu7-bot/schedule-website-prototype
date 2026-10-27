@@ -1,19 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Website</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 640px;
-           margin: 4rem auto; padding: 0 1rem; line-height: 1.6; }
-    h1 { color: #2b5fd9; }
-    a { color: #2b5fd9; }
-  </style>
-</head>
-<body>
-  <h1>Hello, world!</h1>
-  <p>Welcome to my website, hosted for free on GitHub Pages.</p>
-  <p><a href="https://github.com/">Find me on GitHub</a></p>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><title>ScheduleWise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{box-sizing:border-box;--bg:#f7f3ea;--card:#fffdf8;--ink:#1f2a24;--mut:#66726a;--hd:#1f3b2d;--ac:#5f8a6b;--acl:#e3eee5;--bd:#e4dfd0;--wa:#b7791f;--rd:#a94b3b;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+header{background:var(--hd);color:#fff;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 24px}
+header h1{margin:0;font-size:22px;letter-spacing:.3px}.badge{background:#ffffff1f;border-radius:99px;padding:5px 12px;font-size:13px}
+.hl{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+main{max-width:1200px;margin:0 auto;padding:20px 16px 60px}
+section{margin-bottom:28px}h2{font-size:22px;margin:0 0 4px}h3{margin:0 0 8px;font-size:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px}
+.sub{color:var(--mut);font-size:13px}
+button,select,input[type=text],input[type=time]{font:inherit}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:600}
+.btn:hover{background:#4d7659}.btn.alt{background:var(--acl);color:var(--hd)}.btn.hd{background:#fff;color:var(--hd)}.btn.sm{padding:4px 9px;font-size:13px}
+.grid{display:grid;gap:14px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}
+.bar{height:12px;background:#e8e3d3;border-radius:9px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
+.req{display:grid;grid-template-columns:1fr;gap:6px;margin-top:8px}
+.r{display:flex;gap:8px;align-items:flex-start;padding:8px;border:1px solid var(--bd);border-radius:10px;background:#fff}
+.r.locked{opacity:.65}.r b{display:block}
+.tag{font-size:11px;border-radius:99px;padding:2px 8px;white-space:nowrap;font-weight:600}
+.t-c{background:var(--acl);color:#2f6a42}.t-e{background:#fff1cf;color:#8a5a0b}.t-l{background:#f3dcd7;color:var(--rd)}
+.prof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}.prof div{background:var(--acl);border-radius:12px;padding:8px 12px}.prof span{display:block;font-size:12px;color:var(--mut)}
+.disc{font-size:12px;color:var(--mut);margin-top:10px}
+.sb{display:grid;grid-template-columns:380px 1fr;gap:16px;align-items:start}
+.cat{max-height:300px;overflow:auto;margin-top:8px}
+.cc{border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:8px;background:#fff}
+.cc .top{display:flex;justify-content:space-between;gap:6px}.cc p{margin:4px 0;font-size:12px;color:var(--mut);font-style:italic}
+.pill{display:inline-block;background:#efeadb;border-radius:8px;padding:1px 7px;font-size:11px;margin:2px 3px 0 0}
+input[type=text]{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:10px;background:#fff}
+.chip{display:inline-flex;gap:6px;align-items:center;background:var(--acl);border-radius:99px;padding:3px 6px 3px 11px;margin:3px;font-size:13px}
+.chip button{border:0;background:#fff;border-radius:50%;width:20px;height:20px;cursor:pointer}
+.prefs label,.days label{display:flex;gap:8px;align-items:center;font-size:14px;padding:2px 0}.days{display:flex;gap:8px;flex-wrap:wrap}
+.opt{margin-bottom:16px}.oh{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center}
+.score{background:var(--hd);color:#fff;border-radius:12px;padding:6px 12px;font-weight:700}
+.st{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0;font-size:13px}.st b{display:block;font-size:17px}
+.cal{display:grid;grid-template-columns:34px repeat(5,1fr);font-size:11px;border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff}
+.cal .h{background:#f1ecdd;text-align:center;padding:3px;font-weight:600}.cal .tc{position:relative;border-left:1px solid var(--bd)}
+.cal .hr{border-top:1px dashed #eee6d4;position:absolute;left:0;right:0}
+.blk{position:absolute;left:2px;right:2px;border-radius:6px;color:#fff;padding:2px 4px;overflow:hidden;font-size:10.5px;line-height:1.2}
+.times{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;margin:8px 0}
+.msg{background:var(--acl);border-radius:12px;padding:8px 12px;margin:4px 0;max-width:92%;white-space:pre-wrap;font-size:14px}.msg.me{background:var(--hd);color:#fff;margin-left:auto}
+#chat{position:fixed;right:16px;bottom:16px;width:360px;max-width:calc(100vw - 32px);max-height:75vh;display:none;flex-direction:column;background:var(--card);border:1px solid var(--bd);border-radius:18px;box-shadow:0 12px 40px #0003;z-index:9;overflow:hidden}
+#chat.on{display:flex}#chat .hd{background:var(--hd);color:#fff;padding:10px 14px;display:flex;justify-content:space-between}
+#log{padding:10px;overflow:auto;flex:1;min-height:140px}#qa{padding:0 10px 6px;display:flex;flex-wrap:wrap;gap:6px}
+header{position:sticky;top:0;z-index:8}:focus-visible{outline:2px solid #e0b34a;outline-offset:2px}
+.cc,.opt{transition:box-shadow .15s}.cc:hover{box-shadow:0 2px 10px #0001}
+textarea{width:100%;min-height:90px;padding:9px;border:1px solid var(--bd);border-radius:10px;font:13px monospace;background:#fff;margin:6px 0}
+details.imp{margin-top:12px;background:var(--acl);border-radius:12px;padding:10px 12px}details summary{cursor:pointer;font-weight:600}
+@media print{header,footer,#chat,.sb>.card:first-child,#deg,#dp,.btn,.toast{display:none!important}.sb{display:block}}
+footer{background:var(--hd);color:#d7e6da;text-align:center;padding:18px;font-size:13px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--hd);color:#fff;padding:9px 16px;border-radius:12px;z-index:20;display:none}
+@media(max-width:860px){.sb,.g3,.g2{grid-template-columns:1fr}.prof{grid-template-columns:1fr}header{padding:12px 16px}}
+</style></head><body>
+<header><div class="hl"><h1>ScheduleWise</h1><span class="badge" id="bd">Fall 2026 · Sample catalog</span></div><div class="hl"><button class="btn hd" onclick="dm()">Data: <span id="dsl">Sample</span></button><button class="btn hd" onclick="chat()">Ask ScheduleWise ✦</button></div></header>
+<main>
+<section class="card" id="dp" style="display:none"><h3>Data source</h3>
+<p class="sub">Sample data is built in. To try your own catalog, paste a JSON array of courses (use "Insert template" for the format). Only use data you have permission to use. ScheduleWise never asks for your Cal Poly login and can't fetch official data on its own; custom data stays in your browser and is unverified.</p>
+<textarea id="dj" placeholder='[{"c":"ABC 101","t":"Course title","s":["MWF 09:10-10:00 5"]}]'></textarea>
+<button class="btn sm" onclick="loadJ()">Load my catalog</button> <button class="btn alt sm" onclick="$('dj').value=TPL">Insert template</button> <button class="btn alt sm" onclick="useSample()">Switch back to sample data</button></section>
+<section class="card" id="deg"></section>
+<section><h2>Schedule Builder</h2><p class="sub">Sample data only. Times, seats, ratings and feedback are made up for this prototype. Entries marked "Catalog only" use course codes, titles and units from the published 2026-28 GE lists and have no section times.</p>
+<div class="sb"><div class="card"><h3>Your schedule inputs</h3>
+<input type="text" id="q" placeholder="Search classes (e.g. BUS, statistics)…" oninput="S.q=this.value;cat()">
+<label class="days" style="margin-top:8px"><input type="checkbox" id="oo" onchange="S.oo=this.checked;cat()"> Open sections only</label>
+<div class="cat" id="cat"></div>
+<h3 style="margin-top:12px">Selected classes</h3><div id="selc"></div>
+<h3 style="margin-top:12px">Unavailable times</h3>
+<div class="days" id="ud"></div>
+<div style="display:flex;gap:6px;margin:8px 0;align-items:center"><input type="time" id="us" value="08:00"> to <input type="time" id="ue" value="10:00"><button class="btn alt sm" onclick="addU()">Add</button></div><div id="ul"></div>
+<h3 style="margin-top:12px">Preferences</h3><div class="prefs" id="pf"></div>
+<button class="btn" style="width:100%;margin-top:12px" onclick="gen()">Generate my best schedules</button></div>
+<div><div id="res" class="card"><h3>Recommended schedules</h3><p class="sub">Choose classes, set preferences, then generate options.</p></div>
+<div id="saved" class="card" style="margin-top:14px"></div></div></div></section>
+</main>
+<footer>ScheduleWise is a planning prototype. Verify course availability, prerequisites, degree requirements, and enrollment through Cal Poly’s official systems.</footer>
+<div id="chat"><div class="hd"><b>ScheduleWise ✦ Assistant</b><span style="cursor:pointer" onclick="chat()">✕</span></div>
+<div id="log"><div class="msg">Hi! I'm a prototype assistant with preset answers. I can't access student records or enroll you in classes.</div></div>
+<div id="qa"></div><div style="padding:8px 10px;display:flex;gap:6px"><input type="text" id="ci" placeholder="Ask about prereqs, ratings…" onkeydown="if(event.key==='Enter')ask(this.value)"><button class="btn sm" onclick="ask(ci.value)">Send</button></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const F0=["BUS 1342","BUS 3343"],TECH=["ITP 3303","ITP 3326","ITP 3330","ITP 3341","ITP 3371"];
+const PRQ={"BUS 2206":[["BUS 1100"]],"BUS 3306":[["BUS 2206"]],"BUS 2215":[["BUS 2214"]],"BUS 4404":[["BUS 2207"]],"BUS 3330":[F0,["BUS 3310"]],"BUS 4447":[["BUS 3310"]],"BUS 4488":[["BUS 3310"]],"BUS 4465":[["BUS 4447"]],"BUS 4467":[["BUS 4488"]],"BUS 3313":[["BUS 3310"]],"BUS 4408":[["BUS 3310"]],"BUS 4489":[["BUS 3387"]],"BUS 4312":[["BUS 2207","BUS 3310","BUS 3311","BUS 2220"]],"BUS 3433":[F0],"BUS 4410":[["BUS 2207"]],"BUS 4446":[["BUS 3346"]],"BUS 3343":[["STAT 1220"],["MATH 1264","MATH 1267"]],"BUS 4401":[F0,["BUS 2207"],["BUS 2215"],["BUS 3346"],["BUS 3387"],["BUS 3391"],TECH]};
+const NOTE={"BUS 2206":"sophomore standing","BUS 3306":"junior standing","BUS 4401":"senior standing; BUS 4411 concurrently","BUS 3310":"a GE Area 1 course (C-)","BUS 3346":"a GE Area 1 course (C-)","BUS 3387":"a GE Area 1 course (C-)","BUS 3391":"a GE Area 1 course (C-)","BUS 3330":"Entrepreneurship concentration","BUS 4447":"Entrepreneurship concentration","BUS 4465":"senior standing","BUS 4467":"senior standing","BUS 4461":"senior standing + instructor consent","BUS 4464":"senior standing"};
+const SLOT={"Finance course":{o:F0},"Calculus":{o:["MATH 1264","MATH 1267"]},"Technology Management":{o:["ITP 3303","ITP 3330","ITP 3341","ITP 3371"]},"International Business":{o:["BUS 3302","BUS 3304","BUS 3433","BUS 4410","BUS 4446"]},"Senior Project":{o:["BUS 4461","BUS 4464","BUS 4465","BUS 4467"]},"Startup course":{o:["BUS 4447","BUS 4488"]},"Approved Electives":{k:2,o:["BUS 3311","BUS 4312","BUS 3313","BUS 4408","BUS 4458","BUS 2234","BUS 4489","ITP 3326"]}};
+const miss=c=>(PRQ[c]||[]).filter(g=>!g.some(x=>S.done.includes(x))).map(g=>g.join(" or "));
+function slot(c){const q=SLOT[c],k=q.k||1,n=q.o.filter(x=>S.done.includes(x)).length,s=n>=k?"c":"e";
+return `<div class="r"><span style="flex:1"><b>${c}</b><span class="sub">Choose ${k} · sample-checked below</span>${q.o.map(x=>`<label style="display:inline-flex;gap:4px;margin:3px 10px 0 0;font-size:12px" title="${miss(x).length&&!S.done.includes(x)?"Missing: "+miss(x).join("; "):""}"><input type="checkbox" ${S.done.includes(x)?"checked":""} onchange="tog('${x}')">${x}${miss(x).length&&!S.done.includes(x)?" 🔒":""}</label>`).join("")}</span><span class="tag t-${s}">${s=="c"?"Completed":"Eligible next ("+n+"/"+k+")"}</span></div>`}
+const G=[["Business Foundation",["BUS 1100","BUS 2206","BUS 3306","BUS 2214","BUS 2215","BUS 2207","Finance course"]],["Business Core",["BUS 3346","BUS 3387","BUS 3391","BUS 4404","BUS 4401","Technology Management","International Business","Senior Project"]],["Quantitative & Support",["ECON 2001","STAT 1210","STAT 1220","Calculus"]],["Entrepreneurship Concentration",["BUS 3310","BUS 3330","ITP 4406","Startup course","Approved Electives"]]];
+const REQ=G.flatMap(g=>g[1]);
+const D=[];const C=(c,t,u,m,r,w,f,s)=>D.push({c,t,u,m,r,w,f,s:s.map(x=>{const[d,tm,o]=x.split(' '),[a,b]=tm.split('-');return{d:d.split(''),s:T(a),e:T(b),o:+o,l:d+' '+a+'–'+b}})});
+function T(s){const[h,m]=s.split(':');return +h*60+ +m}
+C("BUS 310","Professional Business Writing",4,"In person",4.2,"Moderate","“Clear expectations, lots of short writing.”",["MW 09:10-11:00 6","TR 13:10-15:00 0","MW 14:10-16:00 12"]);
+C("BUS 3391","Business Analytics Lab",4,"In person",3.8,"High","“Great skills, heavy weekly labs.”",["TR 10:10-12:00 4","MW 12:10-14:00 9"]);
+C("STAT 312","Applied Business Statistics",4,"In person",3.6,"High","“Practice problems are key.”",["MWF 10:10-11:00 3","MWF 13:10-14:00 10","TR 08:10-10:00 7"]);
+C("ECON 221","Principles of Microeconomics",4,"In person",4.0,"Moderate","“Interesting and well organized.”",["MWF 09:10-10:00 15","TR 11:10-13:00 8"]);
+C("ACCT 201","Financial Accounting",4,"In person",3.9,"Moderate","“Homework adds up but is fair.”",["MW 11:10-13:00 5","TR 15:10-17:00 11"]);
+C("MKT 300","Principles of Marketing",4,"Hybrid",4.4,"Light","“Case studies, fun group projects.”",["TR 09:10-11:00 6","MW 15:10-17:00 2"]);
+C("BUS 215","Intro to Entrepreneurship",4,"In person",4.6,"Light","“Inspiring guest speakers.”",["F 09:10-12:00 10","TR 13:10-15:00 14"]);
+C("BUS 346","Startup Analytics",4,"In person",4.1,"Moderate","“Hands-on, real startup data.”",["MW 13:10-15:00 7","TR 09:10-11:00 3"]);
+C("BUS 347","Venture Creation",4,"In person",4.7,"Moderate","“Best project class in the major.”",["TR 14:10-16:00 5","MW 16:10-18:00 9"]);
+C("FIN 313","Corporate Finance",4,"In person",3.4,"High","“Tough exams; go to office hours.”",["MWF 11:10-12:00 4","TR 12:10-14:00 0"]);
+C("MGMT 325","Organizational Behavior",4,"Online",4.3,"Light","“Flexible and very readable.”",["ONLINE 00:00-00:00 20"]);
+C("PHIL 230","Ethics",4,"In person",4.5,"Light","“Great discussions, easy reading load.”",["MWF 12:10-13:00 12","TR 10:10-12:00 6"]);
+C("COMS 101","Public Speaking",4,"In person",4.2,"Moderate","“Nerve-wracking then rewarding.”",["MW 10:10-12:00 8","TR 16:10-18:00 10"]);
+C("PSY 201","General Psychology",4,"In person",4.0,"Light","“Big lecture, straightforward.”",["MWF 08:10-09:00 20","TR 13:10-15:00 25"]);
+C("SOC 110","Intro to Sociology",4,"In person",4.1,"Light","“Relevant and engaging.”",["MW 13:10-15:00 9","F 10:10-13:00 4"]);
+C("HIST 201","U.S. History",4,"In person",3.7,"Moderate","“Lots of reading, fair exams.”",["TR 09:10-11:00 7","MWF 14:10-15:00 0"]);
+C("ENGL 145","Writing & Rhetoric",4,"In person",4.0,"Moderate","“Feedback is detailed.”",["MW 09:10-11:00 5","TR 15:10-17:00 8"]);
+C("ART 122","Drawing Fundamentals",4,"In person",4.6,"Light","“Relaxing studio time.”",["F 13:10-17:00 6","TR 13:10-15:00 3"]);
+C("ASTR 101","Intro Astronomy",4,"In person",4.3,"Light","“Easy A, cool topics.”",["MWF 10:10-11:00 18","TR 18:10-20:00 22"]);
+C("BIO 111","General Biology",4,"In person",3.5,"High","“Memorization heavy.”",["MWF 08:10-09:00 4","TR 10:10-12:00 2"]);
+C("POLS 111","American Government",4,"Online",3.9,"Light","“Self-paced modules.”",["ONLINE 00:00-00:00 30"]);
+C("COMS 102","Interpersonal Communication",4,"In person",4.4,"Light","“Practical for careers.”",["TR 11:10-13:00 9","MW 16:10-18:00 7"]);
+C("KINE 199","Fitness Lab",1,"In person",4.8,"Light","“Great stress relief.”",["MW 12:10-13:00 15","TR 08:10-09:00 10"]);
+["COMS 1101|Public Speaking|3|1C","ENGL 1134|Writing and Rhetoric|3|1A","ENGL 1145|Writing Arguments|3|1B","PHIL 1126|Logic and Argumentative Writing|3|1B","STAT 1210|Business Statistics I|3|2","MATH 1267|Business Calculus|3|2","BUS 1204|Financial Literacy|3|2","STAT 1110|Applied Statistical Concepts and Methods|3|2","DATA 1000|Statistical and Data Literacy|3|2","ART 1101|Fundamentals of Drawing|3|3A","ART 1111|Introduction to the Visual Arts|3|3A","TH 2210|Introduction to Theatre|3|3A","PHIL 2230|Philosophical Classics: Knowledge and Reality|3|3B","PHIL 2231|Philosophical Classics: Ethics and Political Philosophy|3|3B","ENGL 2242|U.S. Literature: 1830 to Present|3|3B","POLS 1112|U.S. and California Government|3|4A","HIST 2201|United States History to 1877|3|4A","HIST 2202|United States History Since 1877|3|4A","ECON 2040|Macroeconomics|3|4B","PSY 2201|Introductory Psychology|3|4B","SOC 1110|Comparative Societies|3|4B","COMS 2211|Interpersonal Communication|3|4B","BUS 2201|Taxation and Society|3|4B","ASTR 1101|Introduction to the Solar System|3|5A","PHYS 1111|Contemporary Physics for Nonscientists|3|5A","BIO 1111|General Biology|3|5B","BIO 1112|Biology Laboratory for Non-Majors|1|5C","ES 2254|Introduction to African American Studies|3|6","ES 2255|Introduction to Latina/o/x Studies|3|6","COMS 3305|Persuasion|3|Upper-Div 4","PHIL 3337|Business Ethics|3|Upper-Div 3"].forEach(x=>{const[c,t,u,a]=x.split("|");D.push({c,t,u:+u,m:"—",r:0,w:"—",f:"GE Area "+a+" · 2026-28 catalog entry",s:[],cat:1})});
+D.splice(0,D.length,...D.filter(k=>k.cat&&!REQ.includes(k.c)&&!Object.values(SLOT).some(q=>q.o.includes(k.c))));
+const R=(c,t,u,r,w,s)=>C(c,t,u,"In person",r,w,"“Sample feedback (placeholder, not real).”",s);
+R("BUS 1100","Career Readiness I",1,4.0,"Light",["F 09:10-10:00 20","M 15:10-16:00 14"]);
+R("BUS 2206","Career Readiness II",1,4.0,"Light",["W 15:10-16:00 18","F 11:10-12:00 9"]);
+R("BUS 3306","Career Readiness III",1,3.9,"Light",["M 16:10-17:00 12","F 14:10-15:00 6"]);
+R("BUS 2207","Legal Responsibilities of Business",3,3.8,"Moderate",["MWF 09:10-10:00 8","TR 13:10-14:25 0"]);
+R("BUS 2214","Financial Accounting",3,3.9,"Moderate",["MWF 10:10-11:00 5","TR 09:40-10:55 12"]);
+R("BUS 2215","Managerial Accounting",3,3.7,"Moderate",["MWF 12:10-13:00 9","TR 14:40-15:55 3"]);
+R("BUS 1342","Financial Institutions",3,3.6,"High",["TR 08:10-09:25 10","MWF 13:10-14:00 7"]);
+R("BUS 3346","Principles of Marketing",3,4.4,"Light",["MWF 11:10-12:00 6","TR 11:10-12:25 15"]);
+R("BUS 3387","Organizational Behavior",3,4.2,"Light",["MW 14:10-15:25 8","TR 15:10-16:25 4"]);
+R("BUS 3391","Information Systems",3,3.8,"Moderate",["MWF 14:10-15:00 11","TR 12:40-13:55 2"]);
+R("BUS 4404","Law, Governmental, and Social Influences on Business",3,3.9,"Moderate",["TR 09:40-10:55 7","MWF 15:10-16:00 0"]);
+R("BUS 4401","Strategic Management",3,4.1,"High",["MW 16:10-17:25 9","TR 14:10-15:25 5"]);
+R("ECON 2001","Survey of Economics",3,4.0,"Moderate",["MWF 09:10-10:00 20","TR 10:10-11:25 14"]);
+R("STAT 1210","Business Statistics I",3,3.6,"High",["MWF 10:10-11:00 6","TR 13:10-14:25 9"]);
+R("STAT 1220","Business Statistics II",3,3.5,"High",["MWF 13:10-14:00 4","TR 09:40-10:55 10"]);
+R("MATH 1267","Business Calculus",3,3.4,"High",["MWF 08:10-09:00 12","TR 15:10-16:25 5"]);
+R("BUS 3310","Introduction to Entrepreneurship",4,4.6,"Moderate",["TR 10:40-12:20 4","MW 15:10-16:50 8"]);
+R("BUS 3330","Funding and Managing Startup Companies",4,4.3,"Moderate",["MW 12:40-14:20 6","TR 14:10-15:50 3"]);
+R("ITP 4406","Business-to-Business Complex Solutions Selling",3,4.5,"Light",["F 09:10-11:55 10","MW 11:10-12:25 7"]);
+R("BUS 4447","Defining and Building Technology Startups",4,4.7,"High",["TR 16:10-17:50 5","MW 09:10-10:50 9"]);
+[["BUS 3343","Quantitative Methods in Finance",3],["BUS 3302","International and Cross Cultural Management",3],["BUS 3304","International Supply Chains",3],["BUS 3433","Global Financial Institutions and Markets",3],["BUS 4410","The Legal Environment of International Business",3],["BUS 4446","International Marketing",3],["BUS 4461","Senior Project I",2],["BUS 4464","Applied Senior Project Seminar",3],["BUS 4465","Senior Project: Building and Launching the Technology Startup",4],["BUS 4467","Senior Project: Growing the Early Stage Startup",4],["BUS 4488","Building a Startup Skill Set",4],["BUS 3311","Managing Technology in the International Legal Environment",3],["BUS 4312","Entrepreneurship Law",3],["BUS 3313","Customer Development",4],["BUS 4408","Innovation and Entrepreneurship Through Disruptive Technologies",4],["BUS 4458","Solving Big World Challenges",4],["BUS 2234","Introduction to Design Thinking",4],["BUS 4489","Negotiation",3],["MATH 1264","Title not loaded (see catalog)",3],["ITP 3303","Title not loaded (see catalog)",3],["ITP 3326","Title not loaded (see catalog)",3],["ITP 3330","Title not loaded (see catalog)",3],["ITP 3341","Title not loaded (see catalog)",3],["ITP 3371","Title not loaded (see catalog)",3]].forEach(([c,t,u])=>D.push({c,t,u,m:"—",r:0,w:"—",f:"2026-28 catalog entry (code/title only)",s:[],cat:1}));
+const SAMPLE=D.slice();
+const get=c=>D.find(x=>x.c===c)||{c,t:"Not in loaded catalog",u:0,m:"",r:"–",w:"–",f:"",s:[]};
+const PF=[["noFri","Avoid Friday classes"],["after10","Start after 10:00 AM"],["gaps","Minimize long gaps"],["fewer","Fewer campus days"],["noEve","Avoid evening classes"],["open","Prefer open sections"],["rating","Prefer highly rated classes"]];
+const DN=[["M","Mon"],["T","Tue"],["W","Wed"],["R","Thu"],["F","Fri"]];
+const COL=["#3f6b4f","#8a6a3b","#4b6d8a","#8a4b5f","#6b5b95","#4f8a86","#9a6a2f","#5a7a3a"];
+let S={done:["ACCT 201","ECON 221","COMS 101"],sel:[],q:"",oo:false,un:[],pf:{},saved:[],cmp:[],res:[],ud:[],cj:""};
+try{const x=JSON.parse(localStorage.getItem("sw")||"null");if(x)Object.assign(S,x,{q:"",res:[]})}catch(e){}
+const save=()=>{try{localStorage.setItem("sw",JSON.stringify({done:S.done,sel:S.sel,saved:S.saved,pf:S.pf,un:S.un,oo:S.oo,cj:S.cj}))}catch(e){}};
+const $=id=>document.getElementById(id);
+function toast(m){const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(t._t);t._t=setTimeout(()=>t.style.display="none",2200)}
+const st=c=>{if(SLOT[c]){const q=SLOT[c];return q.o.filter(x=>S.done.includes(x)).length>=(q.k||1)?"c":"e"}return S.done.includes(c)?"c":miss(c).length?"l":"e"};
+const elig=()=>REQ.flatMap(c=>st(c)!="e"?[]:SLOT[c]?SLOT[c].o.filter(x=>!S.done.includes(x)&&!miss(x).length).slice(0,1):[c]);
+function deg(){const n=REQ.filter(c=>st(c)=="c").length,e=elig().length;
+$("deg").innerHTML=`<h2>See what you need before building a schedule.</h2>
+<div class="prof"><div><span>Major</span>Business Administration</div><div><span>Concentration</span>Entrepreneurship</div><div><span>Expected graduation</span>Spring 2028</div></div>
+<b>${n} of ${REQ.length} sample requirements completed · ${e} eligible to plan next</b><div class="bar"><i style="width:${n/REQ.length*100}%"></i></div>
+<div class="grid g2">${G.map(([g,l])=>`<div><h3>${g}</h3><div class="req">${l.map(c=>{if(SLOT[c])return slot(c);const s=st(c),k=get(c);return `<label class="r ${s=="l"?"locked":""}"><input type="checkbox" ${s=="c"?"checked":""} onchange="tog('${c}')"><span style="flex:1"><b>${c} · ${k.t}</b><span class="sub">${s=="l"?"Missing prerequisite: "+miss(c).join("; ")+(NOTE[c]?" · also: "+NOTE[c]:""):"★ "+k.r+" · "+k.w+" workload"+(NOTE[c]?" · also needs "+NOTE[c]:"")}</span></span><span class="tag t-${s}">${s=="c"?"Completed":s=="e"?"Eligible next":"Locked"}</span></label>`}).join("")}</div></div>`).join("")}</div>
+<button class="btn" style="margin-top:14px" onclick="addE()">Add eligible next classes</button>
+<details class="imp"><summary>Import completed courses</summary><p class="sub">Paste course codes from your own notes or Degree Progress Report text (e.g. "ACCT 201, BUS 215"). Codes are matched in your browser; nothing is uploaded. Never share your Cal Poly login.</p><textarea id="imp" placeholder="ACCT 201, ECON 221 ..."></textarea><button class="btn sm" onclick="imp()">Import</button></details>
+<p class="disc">Planning prototype only. Confirm official requirements with your Degree Progress Report and academic advisor.</p>`}
+function tog(c){S.done=S.done.includes(c)?S.done.filter(x=>x!==c):[...S.done,c];S.sel=S.sel.filter(x=>!S.done.includes(x));save();deg();cat();sel()}
+function addE(){let a=0;for(const c of elig()){if(a>=4)break;if(!S.sel.includes(c)&&D.some(k=>k.c===c)){S.sel.push(c);a++}}save();sel();cat();toast(a?`Added ${a} eligible class${a>1?"es":""} to your planner`:"No new eligible classes to add")}
+function cat(){const q=S.q.toLowerCase();$("cat").innerHTML=D.filter(k=>(k.c+" "+k.t).toLowerCase().includes(q)&&(!S.oo||k.s.some(s=>s.o>0))).map(k=>`<div class="cc"><div class="top"><div><b>${k.c}</b> · ${k.t}<br><span class="pill">${k.u} units</span>${k.cat?'<span class="pill">Catalog only · no section times</span>':`<span class="pill">${k.m}</span><span class="pill">★ ${k.r}/5</span><span class="pill">${k.w}</span>`}</div><button class="btn alt sm" ${S.sel.includes(k.c)?"disabled":""} onclick="add('${k.c}')">${S.sel.includes(k.c)?"Added":"Add"}</button></div><p>${k.cat?k.f:k.f+" (anonymous sample)"}</p>${k.s.filter(s=>!S.oo||s.o>0).map(s=>`<span class="pill">${s.l} · ${s.o} open</span>`).join("")}${miss(k.c).length?`<div class="sub" style="color:var(--rd)">Requires ${miss(k.c).join("; ")}</div>`:""}</div>`).join("")||'<p class="sub">No matches.</p>'}
+function add(c){S.sel.push(c);save();sel();cat()}
+function rm(c){S.sel=S.sel.filter(x=>x!==c);save();sel();cat()}
+function sel(){$("selc").innerHTML=S.sel.map(c=>`<span class="chip">${c}<button onclick="rm('${c}')" aria-label="Remove ${c}">×</button></span>`).join("")+(S.sel.length?`<div class="sub" style="margin-top:6px">${S.sel.reduce((a,c)=>a+get(c).u,0)} units · ${S.sel.filter(c=>get(c).w=="High").length} high-workload</div>`:'<span class="sub">Nothing selected yet.</span>');
+$("ul").innerHTML=S.un.map((u,i)=>`<span class="chip">${u.d.join("")} ${u.a}–${u.b}<button onclick="S.un.splice(${i},1);save();sel()">×</button></span>`).join("")}
+function addU(){const d=[...document.querySelectorAll("#ud input:checked")].map(x=>x.value);if(!d.length||$("us").value>=$("ue").value)return toast("Pick days and a valid time range");S.un.push({d,a:$("us").value,b:$("ue").value});save();sel()}
+function init(){$("ud").innerHTML=DN.map(([v,n])=>`<label><input type="checkbox" value="${v}">${n}</label>`).join("");
+$("pf").innerHTML=PF.map(([k,n])=>`<label><input type="checkbox" ${S.pf[k]?"checked":""} onchange="S.pf['${k}']=this.checked;save()">${n}</label>`).join("");$("oo").checked=S.oo}
+const cf=(a,b)=>a.d.some(x=>b.d.includes(x))&&a.s<b.e&&b.s<a.e;
+function met(combo){const days={};combo.forEach(({k,s})=>s.d.forEach(d=>(days[d]=days[d]||[]).push(s)));let gaps=0;
+Object.values(days).forEach(a=>{a.sort((x,y)=>x.s-y.s);for(let i=1;i<a.length;i++)if(a[i].s-a[i-1].e>=90)gaps++});
+const ks=combo.map(x=>x.k);const early=combo.filter(x=>x.s.s>0&&x.s.s<600).length,eve=combo.filter(x=>x.s.e>1020).length;
+const avg=ks.reduce((a,k)=>a+k.r,0)/ks.length,wl=ks.reduce((a,k)=>a+{Light:1,Moderate:2,High:3}[k.w],0)/ks.length;
+const fri=!!days.F,cd=Object.keys(days).length,lowOpen=combo.filter(x=>x.s.o<=3).length,units=ks.reduce((a,k)=>a+k.u,0);
+const p=S.pf;let sc=50+avg*6+(p.rating?avg*4:0)-gaps*(p.gaps?7:2)-Math.max(0,cd-3)*(p.fewer?7:1.5)-early*(p.after10?9:2)-(fri&&p.noFri?12:0)-eve*(p.noEve?9:1)-lowOpen*(p.open?5:1)-(wl-2)*4;
+return{sc:Math.max(35,Math.min(99,Math.round(sc))),avg:avg.toFixed(1),gaps,cd,early,eve,fri,wl:wl.toFixed(1),units,combo}}
+function gen(){if(!S.sel.length)return toast("Select at least one class first");
+const nos=S.sel.filter(c=>get(c).cat);if(nos.length===S.sel.length)return toast("Those classes have no section times yet. Add sections via the Data panel.");S.nos=nos;
+const opts=S.sel.filter(c=>!get(c).cat).map(c=>{const k=get(c);return{k,s:k.s.filter(s=>(!S.oo||s.o>0)&&!S.un.some(u=>s.d[0]!=="O"&&u.d.some(d=>s.d.includes(d))&&T(u.a)<s.e&&s.s<T(u.b)))}});
+const bad=opts.find(o=>!o.s.length);if(bad){S.res=[];$("res").innerHTML=`<h3>Recommended schedules</h3><p>No open, conflict-free section of <b>${bad.k.c}</b> fits your unavailable times. Try removing a block or turning off "Open sections only".</p>`;return}
+const out=[];let n=0;(function bt(i,cur){if(n>6000)return;if(i==opts.length){n++;out.push(met(cur.slice()));return}
+for(const s of opts[i].s){const o={k:opts[i].k,s};if(s.d[0]!=="O"&&cur.some(x=>x.s.d[0]!=="O"&&cf(x.s,s)))continue;cur.push(o);bt(i+1,cur);cur.pop()}})(0,[]);
+if(!out.length){$("res").innerHTML=`<h3>Recommended schedules</h3><p>Every combination has a time conflict. Try swapping a class or removing one.</p>`;return}
+out.sort((a,b)=>b.sc-a.sc);S.res=out.slice(0,4);rr();toast(`Found ${out.length} conflict-free option${out.length>1?"s":""}`)}
+function cal(combo,h=32){const H=12,px=h/60,d="MTWRF";let x='<div class="cal"><div class="h"></div>'+DN.map(a=>`<div class="h">${a[1]}</div>`).join("");
+x+=`<div class="tc" style="height:${H*h}px;border:0">${Array.from({length:H},(_,i)=>`<div class="hr" style="top:${i*h}px;font-size:9px;color:#999">${(8+i)>12?8+i-12:8+i}</div>`).join("")}</div>`;
+for(const dd of d){x+=`<div class="tc" style="height:${H*h}px">${Array.from({length:H},(_,i)=>`<div class="hr" style="top:${i*h}px"></div>`).join("")}`;
+combo.forEach(({k,s},i)=>{if(s.d.includes(dd))x+=`<div class="blk" style="background:${COL[D.indexOf(k)%COL.length]};top:${(s.s-480)*px}px;height:${(s.e-s.s)*px-2}px"><b>${k.c}</b><br>${s.l.split(' ')[1]}</div>`});x+="</div>"}return x+"</div>"}
+const sts=m=>`<div class="st"><div><b>${m.avg}</b>Avg rating</div><div><b>${m.gaps}</b>Long gaps</div><div><b>${m.cd}</b>Campus days</div><div><b>${m.early}</b>Early starts</div><div><b>${m.wl}</b>Workload (1–3)</div><div><b>${m.units}</b>Units</div></div>`;
+const times=m=>`<div class="times">${m.combo.map(({k,s})=>`<span class="pill">${k.c}: ${s.d[0]==="O"?"Online (async)":s.l} · ${s.o} open</span>`).join("")}</div>`;
+function rr(){$("res").innerHTML=`<h3>Recommended schedules</h3>`+((S.nos||[]).length?`<p class="sub">Not scheduled (no section times): ${S.nos.join(", ")}</p>`:"")+S.res.map((m,i)=>`<div class="opt card"><div class="oh"><h3>Option ${i+1}</h3><span class="score">Fit ${m.sc}</span></div>${sts(m)}${times(m)}${cal(m.combo)}<button class="btn alt" style="margin-top:8px" onclick="sv(${i})">Save this schedule</button></div>`).join("")}
+function sv(i){const m=S.res[i];S.saved.push({n:"Saved plan "+(S.saved.length+1),sc:m.sc,items:m.combo.map(x=>[x.k.c,D.find(k=>k===x.k).s.indexOf(x.s)])});save();sv2();toast("Schedule saved")}
+const load=x=>met(x.items.map(([c,i])=>({k:get(c),s:get(c).s[i]})));
+function sv2(){const s=S.saved;let h=`<h3>Saved schedules</h3>`;if(!s.length){$("saved").innerHTML=h+'<p class="sub">Save options to compare them side by side.</p>';return}
+h+=s.map((x,i)=>`<div class="chip"><label><input type="checkbox" ${S.cmp.includes(i)?"checked":""} onchange="cp(${i})"> ${x.n} (Fit ${x.sc})</label><button onclick="del(${i})">×</button></div>`).join("")+'<p class="sub">Tick two to compare. <button class="btn alt sm" onclick="print()">Print / save as PDF</button></p>';
+if(S.cmp.length==2)h+=`<div class="grid g2">${S.cmp.map(i=>{const m=load(s[i]);return `<div class="card"><h3>${s[i].n}</h3>${sts(m)}${cal(m.combo,22)}</div>`}).join("")}</div>`;$("saved").innerHTML=h}
+function cp(i){S.cmp=S.cmp.includes(i)?S.cmp.filter(x=>x!==i):[...S.cmp,i].slice(-2);sv2()}
+function del(i){S.saved.splice(i,1);S.cmp=[];save();sv2()}
+function chat(){$("chat").classList.toggle("on")}
+const QA=[["What should I do next?","next"],["Check my schedule","chk"],["Compare workload","wl"],["Help me make backups","bk"]];
+$("qa").innerHTML=QA.map(([t,k])=>`<button class="btn alt sm" onclick="ask('${t}','${k}')">${t}</button>`).join("");
+function reply(k){const e=elig();
+if(k=="next")return `You have ${REQ.length-S.done.filter(c=>REQ.includes(c)).length} sample requirements left. Eligible now: ${e.join(", ")||"none"}. Locked: ${REQ.filter(c=>st(c)=="l").map(c=>c+" (needs "+miss(c).join("; ")+")").join(", ")||"none"}. Try "Add eligible next classes".`;
+if(k=="chk"){if(!S.res.length)return "Generate schedules first and I'll point out conflicts, gaps and early starts.";const m=S.res[0];return `Your top option has no time conflicts, ${m.gaps} long gap(s), ${m.cd} campus days and ${m.early} early start(s).`}
+if(k=="wl"){if(!S.sel.length)return "Select classes first to compare workload.";return "Workload for your picks:\n"+S.sel.map(c=>`${c}: ${get(c).w} (★ ${get(c).r})`).join("\n")+"\nTip: pair no more than two High-workload classes."}
+if(k=="bk")return "Backups: save 2–3 different options, include alternate sections for full classes (0 open), and try turning on 'Open sections only' for a safer plan.";
+if(k=="pre")return "Prerequisites for BUS courses come from the 2026-28 catalog BUS page, e.g. BUS 2215 needs BUS 2214; BUS 3330 needs BUS 1342 or 3343 plus BUS 3310; BUS 4404 needs BUS 2207. Standing, GE and concentration rules are shown as notes but not enforced. ITP, STAT, MATH and ECON prerequisites aren't loaded yet, so verify those in the catalog.";
+return "I'm a prototype with preset answers. Try asking about prerequisites, requirements, workload, conflicts, or backups."}
+function ask(t,k){if(!t.trim())return;const l=$("log");l.innerHTML+=`<div class="msg me">${t.replace(/</g,"&lt;")}</div>`;
+if(!k){const s=t.toLowerCase();k=/prereq|require/.test(s)?(/prereq/.test(s)?"pre":"next"):/conflict|check/.test(s)?"chk":/work|rating|hard/.test(s)?"wl":/backup/.test(s)?"bk":"x"}
+l.innerHTML+=`<div class="msg">${reply(k)}\n\n<span class="sub">Prototype: no access to student records; cannot enroll you.</span></div>`;$("ci").value="";l.scrollTop=1e9}
+const TPL='[{"c":"ABC 101","t":"Sample Course","u":4,"m":"In person","r":4.2,"w":"Moderate","f":"Optional feedback","s":["MWF 09:10-10:00 5","TR 13:10-15:00 0"]}]';
+function dm(){const p=$("dp");p.style.display=p.style.display=="none"?"block":"none"}
+function refresh(){$("bd").textContent=S.cj?"Custom catalog · Unverified":"Fall 2026 · Sample catalog";$("dsl").textContent=S.cj?"Custom":"Sample";deg();cat();sel();sv2()}
+function loadJ(q){try{const a=JSON.parse($("dj").value);if(!Array.isArray(a)||!a.length)throw new Error("Expected a non-empty array");
+const n=a.map(x=>{if(!x.c||!x.t||!Array.isArray(x.s)||!x.s.length)throw new Error("Each course needs c, t and s");return{c:x.c,t:x.t,u:x.u||4,m:x.m||"In person",r:+x.r||0,w:x.w||"Moderate",f:x.f||"",s:x.s.map(z=>{const[d,tm,o]=z.split(" "),[p,e]=tm.split("-");return{d:d.split(""),s:T(p),e:T(e),o:+o||0,l:d+" "+p+"–"+e}})}});
+D.length=0;D.push(...n);S.cj=$("dj").value;S.sel=S.sel.filter(c=>D.some(k=>k.c===c));save();refresh();if(!q)toast("Custom catalog loaded ("+n.length+" courses)")}catch(e){toast("Couldn't read that JSON: "+(e.message||"check format"))}}
+function useSample(){D.length=0;D.push(...SAMPLE);S.cj="";$("dj").value="";save();refresh();toast("Back to sample data")}
+function imp(){const m=[...$("imp").value.toUpperCase().matchAll(/\b([A-Z]{2,5})\s*-?(\d{3,4})\b/g)].map(x=>x[1]+" "+x[2]);
+const ok=[...new Set(m)].filter(c=>REQ.includes(c)||D.some(k=>k.c===c)),nw=ok.filter(c=>!S.done.includes(c));
+S.done.push(...nw);S.sel=S.sel.filter(c=>!S.done.includes(c));save();deg();cat();sel();toast(nw.length?`Imported ${nw.length}: ${nw.join(", ")}`:"No new matching course codes found")}
+init();S.sel=S.sel.filter(c=>D.some(k=>k.c===c));S.saved=S.saved.filter(x=>x.items.every(([c])=>D.some(k=>k.c===c)));S.done=S.done.filter(c=>REQ.includes(c)||Object.values(SLOT).some(q=>q.o.includes(c)));if(!S.done.length&&!S.cj)S.done=["BUS 1100","BUS 2214","STAT 1210"];if(S.cj){$("dj").value=S.cj;loadJ(1)}refresh();
+</script></body></html>
