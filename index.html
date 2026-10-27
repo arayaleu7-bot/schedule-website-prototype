@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><title>ScheduleWise</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
-:root{box-sizing:border-box;--bg:#f7f3ea;--card:#fffdf8;--ink:#1f2a24;--mut:#66726a;--hd:#1f3b2d;--ac:#5f8a6b;--acl:#e3eee5;--bd:#e4dfd0;--wa:#b7791f;--rd:#a94b3b;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{box-sizing:border-box;--wh:#fff;--pl:#efeadb;--ch:#f1ecdd;--tc:#2f6a42;--tea:#fff1cf;--tec:#8a5a0b;--tlb:#f3dcd7;color-scheme:light;--bg:#f7f3ea;--card:#fffdf8;--ink:#1f2a24;--mut:#66726a;--hd:#1f3b2d;--ac:#5f8a6b;--acl:#e3eee5;--bd:#e4dfd0;--wa:#b7791f;--rd:#a94b3b;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
 header{background:var(--hd);color:#fff;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 24px}
@@ -14,31 +14,31 @@ section{margin-bottom:28px}h2{font-size:22px;margin:0 0 4px}h3{margin:0 0 8px;fo
 .sub{color:var(--mut);font-size:13px}
 button,select,input[type=text],input[type=time]{font:inherit}
 .btn{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:600}
-.btn:hover{background:#4d7659}.btn.alt{background:var(--acl);color:var(--hd)}.btn.hd{background:#fff;color:var(--hd)}.btn.sm{padding:4px 9px;font-size:13px}
+.btn:hover{background:#4d7659}.btn.alt{background:var(--acl);color:var(--ink)}.btn.hd{background:#fff;color:var(--hd)}.btn.sm{padding:4px 9px;font-size:13px}
 .grid{display:grid;gap:14px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}
-.bar{height:12px;background:#e8e3d3;border-radius:9px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
+.bar{height:12px;background:var(--pl);border-radius:9px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
 .req{display:grid;grid-template-columns:1fr;gap:6px;margin-top:8px}
-.r{display:flex;gap:8px;align-items:flex-start;padding:8px;border:1px solid var(--bd);border-radius:10px;background:#fff}
+.r{display:flex;gap:8px;align-items:flex-start;padding:8px;border:1px solid var(--bd);border-radius:10px;background:var(--wh)}
 .r.locked{opacity:.65}.r b{display:block}
 .tag{font-size:11px;border-radius:99px;padding:2px 8px;white-space:nowrap;font-weight:600}
-.t-c{background:var(--acl);color:#2f6a42}.t-e{background:#fff1cf;color:#8a5a0b}.t-l{background:#f3dcd7;color:var(--rd)}
+.t-c{background:var(--acl);color:var(--tc)}.t-e{background:var(--tea);color:var(--tec)}.t-l{background:var(--tlb);color:var(--rd)}
 .prof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}.prof div{background:var(--acl);border-radius:12px;padding:8px 12px}.prof span{display:block;font-size:12px;color:var(--mut)}
 .disc{font-size:12px;color:var(--mut);margin-top:10px}
 .sb{display:grid;grid-template-columns:380px 1fr;gap:16px;align-items:start}
-.cat{max-height:300px;overflow:auto;margin-top:8px}
-.cc{border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:8px;background:#fff}
+.cat{max-height:420px;overflow:auto;margin-top:8px}
+.cc{border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:8px;background:var(--wh)}
 .cc .top{display:flex;justify-content:space-between;gap:6px}.cc p{margin:4px 0;font-size:12px;color:var(--mut);font-style:italic}
-.pill{display:inline-block;background:#efeadb;border-radius:8px;padding:1px 7px;font-size:11px;margin:2px 3px 0 0}
-input[type=text]{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:10px;background:#fff}
+.pill{display:inline-block;background:var(--pl);border-radius:8px;padding:1px 7px;font-size:11px;margin:2px 3px 0 0}
+input[type=text]{width:100%;padding:9px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--wh)}
 .chip{display:inline-flex;gap:6px;align-items:center;background:var(--acl);border-radius:99px;padding:3px 6px 3px 11px;margin:3px;font-size:13px}
-.chip button{border:0;background:#fff;border-radius:50%;width:20px;height:20px;cursor:pointer}
+.chip button{border:0;background:var(--wh);border-radius:50%;width:20px;height:20px;cursor:pointer}
 .prefs label,.days label{display:flex;gap:8px;align-items:center;font-size:14px;padding:2px 0}.days{display:flex;gap:8px;flex-wrap:wrap}
 .opt{margin-bottom:16px}.oh{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center}
 .score{background:var(--hd);color:#fff;border-radius:12px;padding:6px 12px;font-weight:700}
 .st{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0;font-size:13px}.st b{display:block;font-size:17px}
-.cal{display:grid;grid-template-columns:34px repeat(5,1fr);font-size:11px;border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff}
-.cal .h{background:#f1ecdd;text-align:center;padding:3px;font-weight:600}.cal .tc{position:relative;border-left:1px solid var(--bd)}
-.cal .hr{border-top:1px dashed #eee6d4;position:absolute;left:0;right:0}
+.cal{display:grid;grid-template-columns:34px repeat(5,1fr);font-size:11px;border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:var(--wh)}
+.cal .h{background:var(--ch);text-align:center;padding:3px;font-weight:600}.cal .tc{position:relative;border-left:1px solid var(--bd)}
+.cal .hr{border-top:1px dashed var(--bd);position:absolute;left:0;right:0}
 .blk{position:absolute;left:2px;right:2px;border-radius:6px;color:#fff;padding:2px 4px;overflow:hidden;font-size:10.5px;line-height:1.2}
 .times{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;margin:8px 0}
 .msg{background:var(--acl);border-radius:12px;padding:8px 12px;margin:4px 0;max-width:92%;white-space:pre-wrap;font-size:14px}.msg.me{background:var(--hd);color:#fff;margin-left:auto}
@@ -47,15 +47,17 @@ input[type=text]{width:100%;padding:9px 12px;border:1px solid var(--bd);border-r
 #log{padding:10px;overflow:auto;flex:1;min-height:140px}#qa{padding:0 10px 6px;display:flex;flex-wrap:wrap;gap:6px}
 header{position:sticky;top:0;z-index:8}:focus-visible{outline:2px solid #e0b34a;outline-offset:2px}
 .cc,.opt{transition:box-shadow .15s}.cc:hover{box-shadow:0 2px 10px #0001}
-textarea{width:100%;min-height:90px;padding:9px;border:1px solid var(--bd);border-radius:10px;font:13px monospace;background:#fff;margin:6px 0}
+textarea{width:100%;min-height:90px;padding:9px;border:1px solid var(--bd);border-radius:10px;font:13px monospace;background:var(--wh);margin:6px 0}
 details.imp{margin-top:12px;background:var(--acl);border-radius:12px;padding:10px 12px}details summary{cursor:pointer;font-weight:600}
 @media print{header,footer,#chat,.sb>.card:first-child,#deg,#dp,.btn,.toast{display:none!important}.sb{display:block}}
-.prof select{width:100%;margin-top:3px;padding:7px 8px;border:1px solid var(--bd);border-radius:8px;background:#fff;color:var(--ink);font:inherit}.prof select:disabled{opacity:.6}
+.prof select{width:100%;margin-top:3px;padding:7px 8px;border:1px solid var(--bd);border-radius:8px;background:var(--wh);color:var(--ink);font:inherit}.prof select:disabled{opacity:.6}
 footer{background:var(--hd);color:#d7e6da;text-align:center;padding:18px;font-size:13px}
 .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--hd);color:#fff;padding:9px 16px;border-radius:12px;z-index:20;display:none}
 @media(max-width:860px){.sb,.g3,.g2{grid-template-columns:1fr}.prof{grid-template-columns:1fr}header{padding:12px 16px}}
-</style></head><body>
-<header><div class="hl"><h1>ScheduleWise</h1><span class="badge" id="bd">Fall 2026 · Sample catalog</span></div><div class="hl"><button class="btn hd" onclick="dm()">Data: <span id="dsl">Sample</span></button><button class="btn hd" onclick="chat()">Ask ScheduleWise ✦</button></div></header>
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.fg select{padding:7px 8px;border:1px solid var(--bd);border-radius:10px;background:var(--wh);font:inherit;min-width:0;color:var(--ink)}.fg select:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111a15;--card:#18231d;--ink:#e6eee8;--mut:#9bb0a3;--hd:#0f2b1e;--ac:#3f8a5e;--acl:#243529;--bd:#2c3d33;--wa:#e0a64a;--rd:#ef8c7c;--wh:#1d2a23;--pl:#2a3b31;--ch:#223228;--tc:#8fd3a6;--tea:#3a3014;--tec:#f0c566;--tlb:#45292a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111a15;--card:#18231d;--ink:#e6eee8;--mut:#9bb0a3;--hd:#0f2b1e;--ac:#3f8a5e;--acl:#243529;--bd:#2c3d33;--wa:#e0a64a;--rd:#ef8c7c;--wh:#1d2a23;--pl:#2a3b31;--ch:#223228;--tc:#8fd3a6;--tea:#3a3014;--tec:#f0c566;--tlb:#45292a;color-scheme:dark}
+.fg select{background:var(--wh)}details.cd summary{cursor:pointer;margin-top:4px}</style></head><body>
+<header><div class="hl"><h1>ScheduleWise</h1><span class="badge" id="bd">Fall 2026 · Sample catalog</span></div><div class="hl"><select id="theme" class="btn hd" aria-label="Theme"><option value="auto">Theme: device</option><option value="light">Light</option><option value="dark">Dark</option></select><button class="btn hd" onclick="dm()">Data: <span id="dsl">Sample</span></button><button class="btn hd" onclick="chat()">Ask ScheduleWise ✦</button></div></header>
 <main>
 <section class="card" id="dp" style="display:none"><h3>Data source</h3>
 <p class="sub">Sample data is built in. To try your own catalog, paste a JSON array of courses (use "Insert template" for the format). Only use data you have permission to use. ScheduleWise never asks for your Cal Poly login and can't fetch official data on its own; custom data stays in your browser and is unverified.</p>
@@ -65,6 +67,19 @@ footer{background:var(--hd);color:#d7e6da;text-align:center;padding:18px;font-si
 <section><h2>Schedule Builder</h2><p class="sub">Sample data only. Times, seats, ratings and feedback are made up for this prototype. Entries marked "Catalog only" use course codes, titles and units from the published 2026-28 GE lists and have no section times.</p>
 <div class="sb"><div class="card"><h3>Your schedule inputs</h3>
 <input type="text" id="q" placeholder="Search classes (e.g. BUS, statistics)…" oninput="S.q=this.value;cat()">
+<div class="fg"><select id="fdept" aria-label="Department"><option value="">All departments</option></select>
+<select id="ffmt" aria-label="Format"><option value="">Any format</option><option>In person</option><option>Hybrid</option><option>Online</option></select>
+<select id="fwl" aria-label="Workload"><option value="">Any workload</option><option>Light</option><option>Moderate</option><option>High</option></select>
+<select id="frt" aria-label="Minimum rating"><option value="0">Any rating</option><option value="3.5">3.5+ rating</option><option value="4">4.0+ rating</option><option value="4.5">4.5+ rating</option></select>
+<select id="fday" aria-label="Meets on"><option value="">Any day</option><option value="M">Monday</option><option value="T">Tuesday</option><option value="W">Wednesday</option><option value="R">Thursday</option><option value="F">Friday</option></select>
+<select id="ftod" aria-label="Time of day"><option value="">Any time</option><option value="am">Morning</option><option value="pm">Afternoon (12–5)</option><option value="eve">Evening (after 5)</option></select>
+<select id="fge" aria-label="GE area"><option value="">Any GE area</option></select>
+<select id="fprof" aria-label="Professor"><option value="">Any professor</option></select>
+<select id="fyr" aria-label="My year standing"><option value="1">First-year</option><option value="2" selected>Second-year</option><option value="3">Third-year</option><option value="4">Fourth-year</option></select>
+<select id="fsort" aria-label="Sort by"><option value="code">Sort: course code</option><option value="rating">Sort: rating</option><option value="seats">Sort: open seats</option><option value="light">Sort: lightest workload</option></select>
+<label class="days" style="align-self:center"><input type="checkbox" id="felig"> Hide locked classes</label><button class="btn alt sm" id="freset" type="button">Clear filters</button></div>
+<div class="sub" id="fc" style="margin-top:6px"></div>
+
 <label class="days" style="margin-top:8px"><input type="checkbox" id="oo" onchange="S.oo=this.checked;cat()"> Open sections only</label>
 <div class="cat" id="cat"></div>
 <h3 style="margin-top:12px">Selected classes</h3><div id="selc"></div>
@@ -140,6 +155,24 @@ R("BUS 3330","Funding and Managing Startup Companies",4,4.3,"Moderate",["MW 12:4
 R("ITP 4406","Business-to-Business Complex Solutions Selling",3,4.5,"Light",["F 09:10-11:55 10","MW 11:10-12:25 7"]);
 R("BUS 4447","Defining and Building Technology Startups",4,4.7,"High",["TR 16:10-17:50 5","MW 09:10-10:50 9"]);
 [["BUS 3343","Quantitative Methods in Finance",3],["BUS 3302","International and Cross Cultural Management",3],["BUS 3304","International Supply Chains",3],["BUS 3433","Global Financial Institutions and Markets",3],["BUS 4410","The Legal Environment of International Business",3],["BUS 4446","International Marketing",3],["BUS 4461","Senior Project I",2],["BUS 4464","Applied Senior Project Seminar",3],["BUS 4465","Senior Project: Building and Launching the Technology Startup",4],["BUS 4467","Senior Project: Growing the Early Stage Startup",4],["BUS 4488","Building a Startup Skill Set",4],["BUS 3311","Managing Technology in the International Legal Environment",3],["BUS 4312","Entrepreneurship Law",3],["BUS 3313","Customer Development",4],["BUS 4408","Innovation and Entrepreneurship Through Disruptive Technologies",4],["BUS 4458","Solving Big World Challenges",4],["BUS 2234","Introduction to Design Thinking",4],["BUS 4489","Negotiation",3],["MATH 1264","Title not loaded (see catalog)",3],["ITP 3303","Title not loaded (see catalog)",3],["ITP 3326","Title not loaded (see catalog)",3],["ITP 3330","Title not loaded (see catalog)",3],["ITP 3341","Title not loaded (see catalog)",3],["ITP 3371","Title not loaded (see catalog)",3]].forEach(([c,t,u])=>D.push({c,t,u,m:"—",r:0,w:"—",f:"2026-28 catalog entry (code/title only)",s:[],cat:1}));
+const C3=(c,t,ge,y,f,w,secs)=>{const s=secs.map(x=>{const[d,tm,o,p,r]=x.split(" "),[a,b]=tm.split("-");return{d:d.split(""),s:T(a),e:T(b),o:+o,p:p.replace("_"," "),rt:+r,l:d+" "+a+"–"+b}});
+const e=D.find(k=>k.c===c);if(e){e.ge=e.ge||ge;e.y=e.y||y;return}
+D.push({c,t,u:4,m:"In person",r:Math.max(...s.map(z=>z.rt)),w,f,ge,y,s})};
+C3("PSY 201","Introduction to Psychology","D1",1,"“Engaging lectures, clear exams.”","Light",["MWF 09:10-10:00 12 Dr._Alvarez 4.6","TR 13:10-14:30 0 Dr._Brandt 4.1"]);
+C3("BUS 310","Foundations of Business Practice","",2,"“Practical and well paced.”","Moderate",["TR 09:40-11:00 10 Dr._Whitfield 4.0","MW 12:10-13:30 3 Dr._Shah 4.3"]);
+C3("PSY 302","Research Methods","",2,"“Hands-on projects, clear grading.”","Moderate",["TR 10:10-11:30 8 Dr._Brandt 4.1","MWF 13:10-14:00 15 Dr._Okafor 3.7"]);
+C3("CD 210","Child Development","D1",1,"“Warm, well-organized lectures.”","Light",["MWF 11:10-12:00 5 Dr._Lindqvist 4.8","TR 08:10-09:30 20 Dr._Park 3.9"]);
+C3("CD 340","Infant and Toddler Development","",3,"“Great case studies.”","Moderate",["TR 14:40-16:00 9 Dr._Lindqvist 4.8"]);
+C3("ENTR 211","Entrepreneurial Thinking","",1,"“Practical and energetic.”","Light",["MW 15:10-16:30 14 Prof._Reyes 4.4","F 10:10-13:00 0 Prof._Reyes 4.4"]);
+C3("MATH 141","Calculus I","B2",1,"“Do the practice sets.”","High",["MWF 08:10-09:00 18 Dr._Nguyen 3.6","MWF 14:10-15:00 6 Dr._Kapoor 4.2"]);
+C3("STAT 217","Statistics for the Social Sciences","B2",1,"“Clear examples.”","Moderate",["TR 11:10-12:30 11 Dr._Kapoor 4.2","MW 10:10-11:30 0 Dr._Nguyen 3.6"]);
+C3("ENGL 134","Writing and Rhetoric","A3",1,"“Useful feedback on drafts.”","Moderate",["MWF 10:10-11:00 7 Dr._Osei 4.5","TR 15:10-16:30 13 Dr._Hale 3.8"]);
+C3("COMS 204","Public Speaking","A1",1,"“Supportive and fun.”","Light",["MW 16:40-18:00 4 Prof._Duarte 4.7","TR 12:40-14:00 0 Prof._Duarte 4.7"]);
+C3("ES 150","Ethnic Studies: Intellectual Traditions","F",1,"“Thoughtful discussions.”","Moderate",["TR 10:10-11:30 16 Dr._Mbeki 4.4"]);
+C3("ART 101","Art Appreciation","C1",1,"“Easygoing and interesting.”","Light",["F 13:10-16:00 22 Prof._Lin 4.0","MW 18:10-19:30 2 Prof._Lin 4.0"]);
+PRQ["PSY 302"]=[["PSY 201"]];PRQ["CD 340"]=[["CD 210"]];
+D.forEach(k=>{if(k.cat&&!k.ge){const g=/GE Area (\S+)/.exec(k.f);if(g)k.ge=g[1]}});
+const GEN={A1:"A1 Oral communication",A3:"A3 Written communication",B2:"B2 Quantitative reasoning",C1:"C1 Arts",D1:"D1 Social sciences",F:"F Ethnic studies"};
 const SAMPLE=D.slice();
 const get=c=>D.find(x=>x.c===c)||{c,t:"Not in loaded catalog",u:0,m:"",r:"–",w:"–",f:"",s:[]};
 const PF=[["noFri","Avoid Friday classes"],["after10","Start after 10:00 AM"],["gaps","Minimize long gaps"],["fewer","Fewer campus days"],["noEve","Avoid evening classes"],["open","Prefer open sections"],["rating","Prefer highly rated classes"]];
@@ -173,7 +206,23 @@ ${ok?`<button class="btn" style="margin-top:14px" onclick="addE()">Add eligible 
 <p class="disc">Planning prototype only. Confirm official requirements with your Degree Progress Report and academic advisor.</p>`}
 function tog(c){S.done=S.done.includes(c)?S.done.filter(x=>x!==c):[...S.done,c];S.sel=S.sel.filter(x=>!S.done.includes(x));save();deg();cat();sel()}
 function addE(){let a=0;for(const c of elig()){if(a>=4)break;if(!S.sel.includes(c)&&D.some(k=>k.c===c)){S.sel.push(c);a++}}save();sel();cat();toast(a?`Added ${a} eligible class${a>1?"es":""} to your planner`:"No new eligible classes to add")}
-function cat(){const q=S.q.toLowerCase();$("cat").innerHTML=D.filter(k=>(k.c+" "+k.t).toLowerCase().includes(q)&&(!S.oo||k.s.some(s=>s.o>0))).map(k=>`<div class="cc"><div class="top"><div><b>${k.c}</b> · ${k.t}<br><span class="pill">${k.u} units</span>${k.cat?'<span class="pill">Catalog only · no section times</span>':`<span class="pill">${k.m}</span><span class="pill">★ ${k.r}/5</span><span class="pill">${k.w}</span>`}</div><button class="btn alt sm" ${S.sel.includes(k.c)?"disabled":""} onclick="add('${k.c}')">${S.sel.includes(k.c)?"Added":"Add"}</button></div><p>${k.cat?k.f:k.f+" (anonymous sample)"}</p>${k.s.filter(s=>!S.oo||s.o>0).map(s=>`<span class="pill">${s.l} · ${s.o} open</span>`).join("")}${miss(k.c).length?`<div class="sub" style="color:var(--rd)">Requires ${miss(k.c).join("; ")}</div>`:""}</div>`).join("")||'<p class="sub">No matches.</p>'}
+const FL={dept:"",fmt:"",wl:"",rt:0,day:"",tod:"",sort:"code",elig:false,ge:"",prof:"",yr:2};
+function fillF(){const sig=D.length+":"+D.map(k=>k.c).join("").length;if(fillF.s===sig)return;fillF.s=sig;
+const set=(id,v,all)=>{const el=$(id),cur=el.value;el.innerHTML='<option value="">'+all+'</option>'+v.map(([a,l])=>`<option value="${a}">${l}</option>`).join("");el.value=v.some(x=>x[0]===cur)?cur:""};
+set("fdept",[...new Set(D.map(k=>k.c.split(" ")[0]))].sort().map(x=>[x,x]),"All departments");
+set("fge",[...new Set(D.map(k=>k.ge).filter(Boolean))].sort().map(x=>[x,GEN[x]||"GE "+x]),"Any GE area");
+set("fprof",[...new Set(D.flatMap(k=>k.s.map(s=>s.p)).filter(Boolean))].sort().map(x=>[x,x]),"Any professor");
+FL.dept=$("fdept").value;FL.ge=$("fge").value;FL.prof=$("fprof").value}
+function fl(q){const tod=s=>s.s<720?"am":s.s<1020?"pm":"eve",W={Light:1,Moderate:2,High:3};
+const r=D.filter(k=>{if(!(k.c+" "+k.t).toLowerCase().includes(q))return false;if(S.oo&&!k.s.some(s=>s.o>0))return false;
+if(FL.dept&&k.c.split(" ")[0]!==FL.dept)return false;if(FL.fmt&&k.m!==FL.fmt)return false;if(FL.wl&&k.w!==FL.wl)return false;
+if(FL.rt&&!(k.r>=FL.rt))return false;if(FL.ge&&k.ge!==FL.ge)return false;if(FL.elig&&(miss(k.c).length||(k.y||1)>FL.yr))return false;
+if((FL.day||FL.tod||FL.prof)&&!k.s.some(s=>(!FL.prof||s.p===FL.prof)&&(!FL.day||s.d.includes(FL.day))&&(!FL.tod||tod(s)===FL.tod)&&(!S.oo||s.o>0)))return false;return true});
+const seats=k=>k.s.reduce((a,s)=>a+s.o,0);
+if(FL.sort==="rating")r.sort((a,b)=>(b.r||0)-(a.r||0));else if(FL.sort==="seats")r.sort((a,b)=>seats(b)-seats(a));else if(FL.sort==="light")r.sort((a,b)=>(W[a.w]||9)-(W[b.w]||9));else r.sort((a,b)=>a.c.localeCompare(b.c));
+return r}
+function cat(){fillF();cat0();const n=fl(S.q.toLowerCase()).length;$("fc").textContent=n+" of "+D.length+" classes match"}
+function cat0(){const q=S.q.toLowerCase();$("cat").innerHTML=fl(q).map(k=>`<div class="cc"><div class="top"><div><b>${k.c}</b> · ${k.t}<br><span class="pill">${k.u} units</span>${k.ge?`<span class="pill">GE ${k.ge}</span>`:""}${(k.y||1)>FL.yr?`<span class="pill">Needs year ${k.y} standing</span>`:""}${k.cat?'<span class="pill">Catalog only · no section times</span>':`<span class="pill">${k.m}</span><span class="pill">★ ${k.r}/5</span><span class="pill">${k.w}</span>`}</div><button class="btn alt sm" ${S.sel.includes(k.c)?"disabled":""} onclick="add('${k.c}')">${S.sel.includes(k.c)?"Added":"Add"}</button></div><p>${k.cat?k.f:k.f+" (anonymous sample)"}</p>${k.s.length?`<details class="cd"><summary class="sub">${k.s.length} section${k.s.length>1?"s":""}</summary>${k.s.filter(s=>!S.oo||s.o>0).map(s=>`<span class="pill">${s.l} · ${s.o} open${s.p?" · "+s.p+(s.rt?" ★"+s.rt:""):""}</span>`).join("")}</details>`:""}${miss(k.c).length?`<div class="sub" style="color:var(--rd)">Requires ${miss(k.c).join("; ")}</div>`:""}</div>`).join("")||'<p class="sub">No matches.</p>'}
 function add(c){S.sel.push(c);save();sel();cat()}
 function rm(c){S.sel=S.sel.filter(x=>x!==c);save();sel();cat()}
 function sel(){$("selc").innerHTML=S.sel.map(c=>`<span class="chip">${c}<button onclick="rm('${c}')" aria-label="Remove ${c}">×</button></span>`).join("")+(S.sel.length?`<div class="sub" style="margin-top:6px">${S.sel.reduce((a,c)=>a+get(c).u,0)} units · ${S.sel.filter(c=>get(c).w=="High").length} high-workload</div>`:'<span class="sub">Nothing selected yet.</span>');
@@ -236,4 +285,15 @@ function imp(){const m=[...$("imp").value.toUpperCase().matchAll(/\b([A-Z]{2,5})
 const ok=[...new Set(m)].filter(c=>REQ.includes(c)||D.some(k=>k.c===c)),nw=ok.filter(c=>!S.done.includes(c));
 S.done.push(...nw);S.sel=S.sel.filter(c=>!S.done.includes(c));save();deg();cat();sel();toast(nw.length?`Imported ${nw.length}: ${nw.join(", ")}`:"No new matching course codes found")}
 init();S.sel=S.sel.filter(c=>D.some(k=>k.c===c));S.saved=S.saved.filter(x=>x.items.every(([c])=>D.some(k=>k.c===c)));S.done=S.done.filter(c=>REQ.includes(c)||Object.values(SLOT).some(q=>q.o.includes(c)));if(!S.done.length&&!S.cj)S.done=["BUS 1100","BUS 2214","STAT 1210"];if(S.cj){$("dj").value=S.cj;loadJ(1)}refresh();
+</script><script>
+(function(){const f=id=>document.getElementById(id);
+const map={fdept:"dept",ffmt:"fmt",fwl:"wl",frt:"rt",fday:"day",ftod:"tod",fsort:"sort",fge:"ge",fprof:"prof",fyr:"yr"};
+Object.entries(map).forEach(([id,k])=>f(id).addEventListener("change",e=>{FL[k]=(k==="rt"||k==="yr")?+e.target.value:e.target.value;cat()}));
+f("felig").addEventListener("change",e=>{FL.elig=e.target.checked;cat()});
+f("freset").addEventListener("click",()=>{["fdept","ffmt","fwl","fday","ftod","fge","fprof"].forEach(id=>f(id).value="");f("felig").checked=false;f("frt").value="0";
+Object.assign(FL,{dept:"",fmt:"",wl:"",rt:0,day:"",tod:"",ge:"",prof:"",elig:false});cat()});
+const th=v=>{v==="auto"?document.documentElement.removeAttribute("data-theme"):document.documentElement.setAttribute("data-theme",v)};
+try{const v=localStorage.getItem("swt");if(v){f("theme").value=v;th(v)}}catch(e){}
+f("theme").addEventListener("change",e=>{th(e.target.value);try{localStorage.setItem("swt",e.target.value)}catch(x){}});
+cat()})();
 </script></body></html>
