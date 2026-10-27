@@ -50,6 +50,7 @@ header{position:sticky;top:0;z-index:8}:focus-visible{outline:2px solid #e0b34a;
 textarea{width:100%;min-height:90px;padding:9px;border:1px solid var(--bd);border-radius:10px;font:13px monospace;background:#fff;margin:6px 0}
 details.imp{margin-top:12px;background:var(--acl);border-radius:12px;padding:10px 12px}details summary{cursor:pointer;font-weight:600}
 @media print{header,footer,#chat,.sb>.card:first-child,#deg,#dp,.btn,.toast{display:none!important}.sb{display:block}}
+.prof select{width:100%;margin-top:3px;padding:7px 8px;border:1px solid var(--bd);border-radius:8px;background:#fff;color:var(--ink);font:inherit}.prof select:disabled{opacity:.6}
 footer{background:var(--hd);color:#d7e6da;text-align:center;padding:18px;font-size:13px}
 .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--hd);color:#fff;padding:9px 16px;border-radius:12px;z-index:20;display:none}
 @media(max-width:860px){.sb,.g3,.g2{grid-template-columns:1fr}.prof{grid-template-columns:1fr}header{padding:12px 16px}}
@@ -144,19 +145,30 @@ const get=c=>D.find(x=>x.c===c)||{c,t:"Not in loaded catalog",u:0,m:"",r:"–",w
 const PF=[["noFri","Avoid Friday classes"],["after10","Start after 10:00 AM"],["gaps","Minimize long gaps"],["fewer","Fewer campus days"],["noEve","Avoid evening classes"],["open","Prefer open sections"],["rating","Prefer highly rated classes"]];
 const DN=[["M","Mon"],["T","Tue"],["W","Wed"],["R","Thu"],["F","Fri"]];
 const COL=["#3f6b4f","#8a6a3b","#4b6d8a","#8a4b5f","#6b5b95","#4f8a86","#9a6a2f","#5a7a3a"];
-let S={done:["ACCT 201","ECON 221","COMS 101"],sel:[],q:"",oo:false,un:[],pf:{},saved:[],cmp:[],res:[],ud:[],cj:""};
+let S={done:["ACCT 201","ECON 221","COMS 101"],sel:[],q:"",oo:false,un:[],pf:{},saved:[],cmp:[],res:[],ud:[],cj:"",pr:{m:"Business Administration (BS)",c:"Entrepreneurship",g:"Spring 2028"}};
 try{const x=JSON.parse(localStorage.getItem("sw")||"null");if(x)Object.assign(S,x,{q:"",res:[]})}catch(e){}
-const save=()=>{try{localStorage.setItem("sw",JSON.stringify({done:S.done,sel:S.sel,saved:S.saved,pf:S.pf,un:S.un,oo:S.oo,cj:S.cj}))}catch(e){}};
+const save=()=>{try{localStorage.setItem("sw",JSON.stringify({done:S.done,sel:S.sel,saved:S.saved,pf:S.pf,un:S.un,oo:S.oo,cj:S.cj,pr:S.pr}))}catch(e){}};
 const $=id=>document.getElementById(id);
+const MAJORS=["Aerospace Engineering (BS)","Agricultural Business (BS)","Agricultural Communication (BS)","Agricultural Science (BS)","Agricultural Systems Management (BS)","Animal Science (BS)","Anthropology and Geography (BS)","Architectural Engineering (BS)","Architecture (BArch)","Art and Design (BFA)","Biochemistry (BS)","Biological Sciences (BS)","Biomedical Engineering (BS)","BioResource and Agricultural Engineering (BS)","Business Administration (BS)","Chemistry (BS)","Child Development (BS)","City and Regional Planning (BS)","Civil Engineering (BS)","Communication Studies (BA)","Comparative Ethnic Studies (BA)","Computer Engineering (BS)","Computer Science (BS)","Construction Management (BS)","Dairy Science (BS)","Data Science (BS)","Economics (BS)","Electrical Engineering (BS)","English (BA)","Environmental Earth and Soil Sciences (BS)","Environmental Engineering (BS)","Environmental Management and Protection (BS)","Experience and Event Management (BS)","Facilities Engineering Technology (BS)","Food Science (BS)","Forest and Fire Sciences (BS)","General Engineering (BS)","Graphic Communication (BS)","History (BA)","Industrial Engineering (BS)","Industrial Technology and Packaging (BS)","Interdisciplinary Studies (BA)","International Strategy and Security (BA)","Journalism (BS)","Kinesiology (BS)","Landscape Architecture (BLA)","Liberal Arts and Engineering Studies (BS)","Liberal Studies (BS)","Manufacturing Engineering (BS)","Marine Engineering Technology (BS)","Marine Sciences (BS)","Marine Transportation (BS)","Materials Engineering (BS)","Mathematics (BS)","Mechanical Engineering (BS), San Luis Obispo Campus","Mechanical Engineering (BS), Solano Campus","Microbiology (BS)","Music (BA)","Nutrition (BS)","Oceanography (BS)","Philosophy (BA)","Physics (BA)","Physics (BS)","Plant Sciences (BS)","Political Science (BA)","Psychology (BS)","Public Health (BS)","Sociology (BA)","Software Engineering (BS)","Spanish (BA)","Statistics (BS)","Theatre Arts (BA)","Wine and Viticulture (BS)"];
+const CONC={"Business Administration (BS)":["Accounting","Consumer Packaging","Entrepreneurship","Financial Management","Information Systems and Analytics","Management and Human Resources","Marketing Management","Real Estate Finance","Supply Chain Management"]};
+const GRADS=[];for(let y=2026;y<=2031;y++)for(const t of["Spring","Summer","Fall"])if(!(y==2026&&t!="Fall"))GRADS.push(t+" "+y);
+const LOADED=()=>S.pr.m=="Business Administration (BS)"&&S.pr.c=="Entrepreneurship";
+const opt=(l,v)=>l.map(x=>`<option ${x==v?"selected":""}>${x}</option>`).join("");
+function prof(){const p=S.pr,cs=CONC[p.m]||[];
+return `<div class="prof"><div><span>Major</span><select aria-label="Major" onchange="setPr('m',this.value)">${opt(MAJORS,p.m)}</select></div>
+<div><span>Concentration</span><select aria-label="Concentration" onchange="setPr('c',this.value)" ${cs.length?"":"disabled"}>${cs.length?opt(cs,p.c):"<option>None loaded for this major</option>"}</select></div>
+<div><span>Expected graduation</span><select aria-label="Expected graduation" onchange="setPr('g',this.value)">${opt(GRADS,p.g)}</select></div></div>`}
+function note(){const p=S.pr;return `<div class="r" style="margin-top:10px"><span><b>Requirements for ${p.m}${p.c?" · "+p.c:""} aren't loaded yet.</b><span class="sub">ScheduleWise only has catalog-based requirements for Business Administration (BS) with the Entrepreneurship concentration. You can still search courses, import completed courses, and build schedules. Check your Degree Progress Report for what you still need.</span></span></div>`}
+function setPr(k,v){S.pr[k]=v;if(k=="m")S.pr.c=(CONC[v]||[""])[0];save();deg()}
 function toast(m){const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(t._t);t._t=setTimeout(()=>t.style.display="none",2200)}
 const st=c=>{if(SLOT[c]){const q=SLOT[c];return q.o.filter(x=>S.done.includes(x)).length>=(q.k||1)?"c":"e"}return S.done.includes(c)?"c":miss(c).length?"l":"e"};
 const elig=()=>REQ.flatMap(c=>st(c)!="e"?[]:SLOT[c]?SLOT[c].o.filter(x=>!S.done.includes(x)&&!miss(x).length).slice(0,1):[c]);
-function deg(){const n=REQ.filter(c=>st(c)=="c").length,e=elig().length;
+function deg(){const ok=LOADED(),n=REQ.filter(c=>st(c)=="c").length,e=elig().length;
 $("deg").innerHTML=`<h2>See what you need before building a schedule.</h2>
-<div class="prof"><div><span>Major</span>Business Administration</div><div><span>Concentration</span>Entrepreneurship</div><div><span>Expected graduation</span>Spring 2028</div></div>
-<b>${n} of ${REQ.length} sample requirements completed · ${e} eligible to plan next</b><div class="bar"><i style="width:${n/REQ.length*100}%"></i></div>
-<div class="grid g2">${G.map(([g,l])=>`<div><h3>${g}</h3><div class="req">${l.map(c=>{if(SLOT[c])return slot(c);const s=st(c),k=get(c);return `<label class="r ${s=="l"?"locked":""}"><input type="checkbox" ${s=="c"?"checked":""} onchange="tog('${c}')"><span style="flex:1"><b>${c} · ${k.t}</b><span class="sub">${s=="l"?"Missing prerequisite: "+miss(c).join("; ")+(NOTE[c]?" · also: "+NOTE[c]:""):"★ "+k.r+" · "+k.w+" workload"+(NOTE[c]?" · also needs "+NOTE[c]:"")}</span></span><span class="tag t-${s}">${s=="c"?"Completed":s=="e"?"Eligible next":"Locked"}</span></label>`}).join("")}</div></div>`).join("")}</div>
-<button class="btn" style="margin-top:14px" onclick="addE()">Add eligible next classes</button>
+${prof()}
+${ok?`<b>${n} of ${REQ.length} requirements completed · ${e} eligible to plan next</b><div class="bar"><i style="width:${n/REQ.length*100}%"></i></div>`:note()}
+${ok?`<div class="grid g2">${G.map(([g,l])=>`<div><h3>${g}</h3><div class="req">${l.map(c=>{if(SLOT[c])return slot(c);const s=st(c),k=get(c);return `<label class="r ${s=="l"?"locked":""}"><input type="checkbox" ${s=="c"?"checked":""} onchange="tog('${c}')"><span style="flex:1"><b>${c} · ${k.t}</b><span class="sub">${s=="l"?"Missing prerequisite: "+miss(c).join("; ")+(NOTE[c]?" · also: "+NOTE[c]:""):"★ "+k.r+" · "+k.w+" workload"+(NOTE[c]?" · also needs "+NOTE[c]:"")}</span></span><span class="tag t-${s}">${s=="c"?"Completed":s=="e"?"Eligible next":"Locked"}</span></label>`}).join("")}</div></div>`).join("")}</div>`:""}
+${ok?`<button class="btn" style="margin-top:14px" onclick="addE()">Add eligible next classes</button>`:""}
 <details class="imp"><summary>Import completed courses</summary><p class="sub">Paste course codes from your own notes or Degree Progress Report text (e.g. "ACCT 201, BUS 215"). Codes are matched in your browser; nothing is uploaded. Never share your Cal Poly login.</p><textarea id="imp" placeholder="ACCT 201, ECON 221 ..."></textarea><button class="btn sm" onclick="imp()">Import</button></details>
 <p class="disc">Planning prototype only. Confirm official requirements with your Degree Progress Report and academic advisor.</p>`}
 function tog(c){S.done=S.done.includes(c)?S.done.filter(x=>x!==c):[...S.done,c];S.sel=S.sel.filter(x=>!S.done.includes(x));save();deg();cat();sel()}
@@ -203,6 +215,7 @@ function chat(){$("chat").classList.toggle("on")}
 const QA=[["What should I do next?","next"],["Check my schedule","chk"],["Compare workload","wl"],["Help me make backups","bk"]];
 $("qa").innerHTML=QA.map(([t,k])=>`<button class="btn alt sm" onclick="ask('${t}','${k}')">${t}</button>`).join("");
 function reply(k){const e=elig();
+if(k=="next"&&!LOADED())return `I don't have requirements loaded for ${S.pr.m}${S.pr.c?" · "+S.pr.c:""} yet, so I can't say what's left. Check your Degree Progress Report or ask your advisor. You can still search courses and build schedules.`;
 if(k=="next")return `You have ${REQ.length-S.done.filter(c=>REQ.includes(c)).length} sample requirements left. Eligible now: ${e.join(", ")||"none"}. Locked: ${REQ.filter(c=>st(c)=="l").map(c=>c+" (needs "+miss(c).join("; ")+")").join(", ")||"none"}. Try "Add eligible next classes".`;
 if(k=="chk"){if(!S.res.length)return "Generate schedules first and I'll point out conflicts, gaps and early starts.";const m=S.res[0];return `Your top option has no time conflicts, ${m.gaps} long gap(s), ${m.cd} campus days and ${m.early} early start(s).`}
 if(k=="wl"){if(!S.sel.length)return "Select classes first to compare workload.";return "Workload for your picks:\n"+S.sel.map(c=>`${c}: ${get(c).w} (★ ${get(c).r})`).join("\n")+"\nTip: pair no more than two High-workload classes."}
